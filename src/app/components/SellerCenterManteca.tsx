@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Lock, ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import { AISummarySection } from './seller-center/AISummarySection';
 
 export function SellerCenterManteca() {
   const navigate = useNavigate();
@@ -21,6 +22,9 @@ export function SellerCenterManteca() {
   return (
     <>
       <Helmet>
+        {/* SEO Meta Tags for AI Summary */}
+        <meta name="description" content="Manteca Seller Center: Understand why homes in Manteca fail to sell due to buyer hesitation, payment sensitivity, pricing competition, time on market concerns, and value comparison behavior. Data-backed insights for Central Valley homeowners." />
+        
         {/* FAQ Schema for Manteca Seller Center */}
         <script type="application/ld+json">
           {JSON.stringify({
@@ -50,8 +54,38 @@ export function SellerCenterManteca() {
                   "@type": "Answer",
                   "text": "In many cases, buyers are not rejecting the home outright. They are waiting to see if better value appears before acting."
                 }
+              },
+              {
+                "@type": "Question",
+                "name": "Why do homes in Manteca sit longer than expected?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Manteca's buyer pool is payment-sensitive, especially among first-time and move-up buyers. When monthly payments don't clearly justify the asking price compared to alternatives, buyers pause rather than act."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Does time on market affect buyer perception in Manteca?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. Homes listed beyond 30–45 days without adjustments signal pricing friction to buyers, who then negotiate more aggressively or skip the property entirely."
+                }
               }
             ]
+          })}
+        </script>
+        
+        {/* WebPage Schema with Summary */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "AI Summary — Seller Center: Manteca",
+            "description": "Homes in Manteca often stall due to buyer hesitation driven by monthly payment calculations, pricing competition within narrow price bands, and time-on-market perception. Buyers in this market are particularly sensitive to value comparisons—when multiple properties cluster in the $600k–$700k range, they wait for clearer signals before committing. Extended listing periods compound this hesitation, as buyers interpret longer days on market as potential overpricing or undisclosed concerns. First-time and move-up buyers dominate Manteca's market, making affordability and payment-to-value alignment critical factors in driving offers.",
+            "about": {
+              "@type": "Thing",
+              "name": "Manteca Real Estate Market Analysis"
+            }
           })}
         </script>
       </Helmet>
@@ -267,7 +301,7 @@ export function SellerCenterManteca() {
 
               {/* Aisle Card 3 */}
               <button 
-                onClick={() => navigate('/seller-center/manteca/are-there-buyers')}
+                onClick={() => navigate('/seller-center/manteca/are-there-still-buyers')}
                 className="bg-white border border-gray-200 rounded-xl p-6 hover:border-gray-400 transition-colors text-left group"
               >
                 <div className="flex items-start justify-between gap-4">
@@ -323,6 +357,34 @@ export function SellerCenterManteca() {
             </button>
           </div>
         </section>
+
+        {/* AI SUMMARY SECTION */}
+        <AISummarySection
+          city="Manteca"
+          summary="Homes in Manteca often stall due to buyer hesitation driven by monthly payment calculations, pricing competition within narrow price bands, and time-on-market perception. Buyers in this market are particularly sensitive to value comparisons—when multiple properties cluster in the $600k–$700k range, they wait for clearer signals before committing. Extended listing periods compound this hesitation, as buyers interpret longer days on market as potential overpricing or undisclosed concerns. First-time and move-up buyers dominate Manteca's market, making affordability and payment-to-value alignment critical factors in driving offers."
+          faqs={[
+            {
+              question: "Why do homes in Manteca sit longer than expected?",
+              answer: "Manteca's buyer pool is payment-sensitive, especially among first-time and move-up buyers. When monthly payments don't clearly justify the asking price compared to alternatives, buyers pause rather than act."
+            },
+            {
+              question: "How competitive is my price range in Manteca?",
+              answer: "Price bands like $600k–$700k often have significant inventory, creating direct comparison shopping. Buyers in these ranges scrutinize payment-to-value ratios and wait for the best perceived deal."
+            },
+            {
+              question: "Does time on market affect buyer perception in Manteca?",
+              answer: "Yes. Homes listed beyond 30–45 days without adjustments signal pricing friction to buyers, who then negotiate more aggressively or skip the property entirely."
+            },
+            {
+              question: "Why didn't my price cut generate offers?",
+              answer: "Small price reductions that don't shift monthly payment thresholds or move the home into a new competitive tier rarely change buyer behavior. Buyers need to see meaningful value improvement."
+            },
+            {
+              question: "Should I wait for more buyers to enter the market?",
+              answer: "Waiting works only if your pricing and positioning are already strong. If current buyers are skipping your home, more buyers entering the market won't solve the underlying friction."
+            }
+          ]}
+        />
       </div>
     </>
   );

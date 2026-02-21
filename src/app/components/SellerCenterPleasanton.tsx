@@ -1,7 +1,8 @@
-import { ArrowLeft, Home, TrendingUp, DollarSign, Users, Clock, BarChart3, Target, AlertCircle, RefreshCw, Layers } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { Lock, ArrowRight, ArrowLeft, Home, Target, DollarSign, Users, RefreshCw, TrendingUp, BarChart3, Clock, AlertCircle, Layers } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import { AISummarySection } from './seller-center/AISummarySection';
 
 export function SellerCenterPleasanton() {
   const navigate = useNavigate();
@@ -14,6 +15,9 @@ export function SellerCenterPleasanton() {
   return (
     <>
       <Helmet>
+        {/* SEO Meta Tags for AI Summary */}
+        <meta name="description" content="Pleasanton Seller Center: Premium Bay Area homes fail to sell when school district positioning, executive buyer expectations, sophisticated comparisons, and lifestyle value don't align. Tri-Valley market insights." />
+        
         {/* FAQ Schema for Pleasanton Seller Center */}
         <script type="application/ld+json">
           {JSON.stringify({
@@ -30,21 +34,51 @@ export function SellerCenterPleasanton() {
               },
               {
                 "@type": "Question",
-                "name": "Why are buyers skipping homes in Pleasanton?",
+                "name": "Why isn't my Pleasanton home getting offers?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Skipping happens when buyers compare a home early and decide not to seriously consider it, often due to pricing position, payment sensitivity, or perceived risk."
+                  "text": "Pleasanton buyers compare homes within specific school zones and neighborhood tiers intensely. If your pricing doesn't clearly justify the value relative to competing properties in similar premium locations, buyers will wait for better options."
                 }
               },
               {
                 "@type": "Question",
-                "name": "Is my home overpriced or are buyers just waiting?",
+                "name": "How do schools impact home sales in Pleasanton?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "In many cases, buyers are not rejecting the home outright. They are waiting to see if better value appears before acting."
+                  "text": "School ratings are critical value drivers. Homes in top-rated zones command significant premiums, but only when priced competitively within that tier. Buyers expect premium value for premium school access."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Why didn't my price reduction generate buyer interest?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Small reductions that don't shift monthly payment perception or move your home into a clearer competitive position rarely change buyer behavior. Pleasanton buyers need to see meaningful value improvement to act."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Should I relist now or wait for better market conditions?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Waiting works only if your pricing and positioning are already competitive. If current buyers are passing on your home due to value perception issues, market timing won't fix the fundamental friction."
                 }
               }
             ]
+          })}
+        </script>
+        
+        {/* WebPage Schema with Summary */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "AI Summary — Seller Center: Pleasanton",
+            "description": "Pleasanton's premium Bay Area positioning creates elevated seller expectations and equally high buyer standards. Homes fail to sell when pricing doesn't align with perceived value within highly competitive school districts and neighborhood tiers. Buyers in Pleasanton are sophisticated, comparison-focused, and willing to wait for the right combination of location, condition, and payment value. They scrutinize property taxes, HOA costs, and total monthly obligations as carefully as list price. Extended time on market triggers skepticism about overpricing or undisclosed issues, making early positioning critical. Successfully selling in Pleasanton requires understanding that buyers are shopping premium lifestyle value, not just property features.",
+            "about": {
+              "@type": "Thing",
+              "name": "Pleasanton Real Estate Market Analysis"
+            }
           })}
         </script>
       </Helmet>
@@ -145,11 +179,11 @@ export function SellerCenterPleasanton() {
 
               {/* Page 4 */}
               <button
-                onClick={() => navigate('/seller-center/pleasanton/are-there-buyers')}
+                onClick={() => navigate('/seller-center/pleasanton/are-there-still-buyers')}
                 className="bg-white border border-gray-200 rounded-lg p-6 hover:border-blue-500 hover:shadow-lg transition-all text-left"
               >
                 <Users className="w-8 h-8 text-gray-700 mb-4" />
-                <h3 className="font-bold text-gray-900 mb-2">Are There Buyers?</h3>
+                <h3 className="font-bold text-gray-900 mb-2">Are There Still Buyers?</h3>
                 <p className="text-sm text-gray-600">
                   Yes — but they're selective.
                 </p>
@@ -228,6 +262,30 @@ export function SellerCenterPleasanton() {
               </button>
             </div>
           </div>
+
+          {/* AI SUMMARY SECTION */}
+          <AISummarySection
+            city="Pleasanton"
+            summary="Pleasanton's premium Bay Area positioning creates elevated seller expectations and equally high buyer standards. Homes fail to sell when pricing doesn't align with perceived value within highly competitive school districts and neighborhood tiers. Buyers in Pleasanton are sophisticated, comparison-focused, and willing to wait for the right combination of location, condition, and payment value. They scrutinize property taxes, HOA costs, and total monthly obligations as carefully as list price. Extended time on market triggers skepticism about overpricing or undisclosed issues, making early positioning critical. Successfully selling in Pleasanton requires understanding that buyers are shopping premium lifestyle value, not just property features."
+            faqs={[
+              {
+                question: "Why isn't my Pleasanton home getting offers?",
+                answer: "Pleasanton buyers compare homes within specific school zones and neighborhood tiers intensely. If your pricing doesn't clearly justify the value relative to competing properties in similar premium locations, buyers will wait for better options."
+              },
+              {
+                question: "How do schools impact home sales in Pleasanton?",
+                answer: "School ratings are critical value drivers. Homes in top-rated zones command significant premiums, but only when priced competitively within that tier. Buyers expect premium value for premium school access."
+              },
+              {
+                question: "Why didn't my price reduction generate buyer interest?",
+                answer: "Small reductions that don't shift monthly payment perception or move your home into a clearer competitive position rarely change buyer behavior. Pleasanton buyers need to see meaningful value improvement to act."
+              },
+              {
+                question: "Should I relist now or wait for better market conditions?",
+                answer: "Waiting works only if your pricing and positioning are already competitive. If current buyers are passing on your home due to value perception issues, market timing won't fix the fundamental friction."
+              }
+            ]}
+          />
         </div>
       </div>
     </>

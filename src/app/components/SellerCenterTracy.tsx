@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Lock, ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import { AISummarySection } from './seller-center/AISummarySection';
 
 export function SellerCenterTracy() {
   const navigate = useNavigate();
@@ -21,6 +22,9 @@ export function SellerCenterTracy() {
   return (
     <>
       <Helmet>
+        {/* SEO Meta Tags for AI Summary */}
+        <meta name="description" content="Tracy Seller Center: Understand why homes in Tracy fail to sell due to buyer hesitation, time on market, pricing friction, competition within the same price range, and monthly payment sensitivity. Data-backed insights for expired, cancelled, and withdrawn listings." />
+        
         {/* FAQ Schema for Tracy Seller Center */}
         <script type="application/ld+json">
           {JSON.stringify({
@@ -50,8 +54,62 @@ export function SellerCenterTracy() {
                   "@type": "Answer",
                   "text": "In many cases, buyers are not rejecting the home outright. They are waiting to see if better value appears before acting."
                 }
+              },
+              {
+                "@type": "Question",
+                "name": "Why do buyers skip my home instead of making an offer?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Buyers often skip homes when they sense pricing friction, see better alternatives in the same price band, or calculate that the monthly payment doesn't align with perceived value. Skipping is a comparison decision, not outright rejection."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How long is too long on the market in Tracy?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "In Tracy's current market, homes that sit beyond 45–60 days without price adjustments typically trigger increased buyer caution. Extended time signals either pricing misalignment or buyer hesitation about the value proposition."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Why didn't my price reduction bring offers?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Price reductions work when they move a home into a different competitive tier or monthly payment range. Small reductions within the same price band often don't change buyer perception enough to trigger action."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Are there still buyers in my price range?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes, but buyers in higher price ranges ($700k+) are more selective and payment-sensitive. They compare options carefully and wait for clear value signals before committing."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Should I relist now or wait for spring?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Waiting for seasonal improvement works only if your home is already well-positioned. If pricing friction exists now, it will likely persist into spring when more inventory competes for the same buyers."
+                }
               }
             ]
+          })}
+        </script>
+        
+        {/* Article/WebPage Schema with Summary */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "AI Summary — Seller Center: Tracy",
+            "description": "Homes in Tracy typically fail to sell due to a combination of buyer hesitation, extended time on market, pricing friction within competitive price bands, and monthly payment sensitivity. When buyers view a property, they often compare it against similar homes in the same price range and calculate whether the monthly payment justifies the purchase. If multiple properties compete in the $700k–$800k range, buyers will wait for the clearest value signal before acting. Extended days on market can amplify buyer caution, as they interpret longer listing periods as either overpricing or hidden issues. Understanding these behavioral patterns helps sellers reposition effectively.",
+            "about": {
+              "@type": "Thing",
+              "name": "Tracy Real Estate Market Analysis"
+            }
           })}
         </script>
       </Helmet>
@@ -393,19 +451,33 @@ export function SellerCenterTracy() {
           </div>
         </section>
 
-        {/* FRAME 6 — FOOTER (MINIMAL) */}
-        <footer className="bg-white border-t border-gray-200 py-8">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center space-y-3">
-              <p className="text-sm text-gray-600">
-                Prepared by Raj Saravanan
-              </p>
-              <p className="text-xs text-gray-500">
-                This is an informational decision tool, not a valuation or offer.
-              </p>
-            </div>
-          </div>
-        </footer>
+        {/* AI SUMMARY SECTION */}
+        <AISummarySection
+          city="Tracy"
+          summary="Homes in Tracy typically fail to sell due to a combination of buyer hesitation, extended time on market, pricing friction within competitive price bands, and monthly payment sensitivity. When buyers view a property, they often compare it against similar homes in the same price range and calculate whether the monthly payment justifies the purchase. If multiple properties compete in the $700k–$800k range, buyers will wait for the clearest value signal before acting. Extended days on market can amplify buyer caution, as they interpret longer listing periods as either overpricing or hidden issues. Understanding these behavioral patterns helps sellers reposition effectively."
+          faqs={[
+            {
+              question: "Why do buyers skip my home instead of making an offer?",
+              answer: "Buyers often skip homes when they sense pricing friction, see better alternatives in the same price band, or calculate that the monthly payment doesn't align with perceived value. Skipping is a comparison decision, not outright rejection."
+            },
+            {
+              question: "How long is too long on the market in Tracy?",
+              answer: "In Tracy's current market, homes that sit beyond 45–60 days without price adjustments typically trigger increased buyer caution. Extended time signals either pricing misalignment or buyer hesitation about the value proposition."
+            },
+            {
+              question: "Why didn't my price reduction bring offers?",
+              answer: "Price reductions work when they move a home into a different competitive tier or monthly payment range. Small reductions within the same price band often don't change buyer perception enough to trigger action."
+            },
+            {
+              question: "Are there still buyers in my price range?",
+              answer: "Yes, but buyers in higher price ranges ($700k+) are more selective and payment-sensitive. They compare options carefully and wait for clear value signals before committing."
+            },
+            {
+              question: "Should I relist now or wait for spring?",
+              answer: "Waiting for seasonal improvement works only if your home is already well-positioned. If pricing friction exists now, it will likely persist into spring when more inventory competes for the same buyers."
+            }
+          ]}
+        />
       </div>
     </>
   );

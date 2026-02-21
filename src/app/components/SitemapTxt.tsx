@@ -1,5 +1,3 @@
-import { useEffect } from 'react';
-
 export function SitemapTxt() {
   const urls = [
     'https://sellwithrajnow.com/',
@@ -8,10 +6,11 @@ export function SitemapTxt() {
     'https://sellwithrajnow.com/second-opinion',
     'https://sellwithrajnow.com/intake',
     'https://sellwithrajnow.com/private-seller-audit',
+    'https://sellwithrajnow.com/contact',
     'https://sellwithrajnow.com/privacy-policy',
     'https://sellwithrajnow.com/terms-of-service',
     'https://sellwithrajnow.com/accessibility',
-    'https://sellwithrajnow.com/contact',
+    // Tracy
     'https://sellwithrajnow.com/seller-center-tracy',
     'https://sellwithrajnow.com/seller-center/tracy/why-didnt-my-home-sell',
     'https://sellwithrajnow.com/seller-center/tracy/skipping-vs-rejection',
@@ -23,6 +22,7 @@ export function SitemapTxt() {
     'https://sellwithrajnow.com/seller-center/tracy/how-long-is-too-long',
     'https://sellwithrajnow.com/seller-center/tracy/why-price-reductions-dont-work',
     'https://sellwithrajnow.com/seller-center/tracy/dead-zone-pricing',
+    // Manteca
     'https://sellwithrajnow.com/seller-center-manteca',
     'https://sellwithrajnow.com/seller-center/manteca/why-didnt-my-home-sell',
     'https://sellwithrajnow.com/seller-center/manteca/skipping-vs-rejection',
@@ -34,6 +34,7 @@ export function SitemapTxt() {
     'https://sellwithrajnow.com/seller-center/manteca/how-long-is-too-long',
     'https://sellwithrajnow.com/seller-center/manteca/why-price-reductions-dont-work',
     'https://sellwithrajnow.com/seller-center/manteca/dead-zone-pricing',
+    // Lathrop
     'https://sellwithrajnow.com/seller-center-lathrop',
     'https://sellwithrajnow.com/seller-center/lathrop/why-didnt-my-home-sell',
     'https://sellwithrajnow.com/seller-center/lathrop/skipping-vs-rejection',
@@ -45,6 +46,7 @@ export function SitemapTxt() {
     'https://sellwithrajnow.com/seller-center/lathrop/how-long-is-too-long',
     'https://sellwithrajnow.com/seller-center/lathrop/why-price-reductions-dont-work',
     'https://sellwithrajnow.com/seller-center/lathrop/dead-zone-pricing',
+    // Mountain House
     'https://sellwithrajnow.com/seller-center-mountain-house',
     'https://sellwithrajnow.com/seller-center/mountain-house/why-didnt-my-home-sell',
     'https://sellwithrajnow.com/seller-center/mountain-house/skipping-vs-rejection',
@@ -56,6 +58,7 @@ export function SitemapTxt() {
     'https://sellwithrajnow.com/seller-center/mountain-house/how-long-is-too-long',
     'https://sellwithrajnow.com/seller-center/mountain-house/why-price-reductions-dont-work',
     'https://sellwithrajnow.com/seller-center/mountain-house/dead-zone-pricing',
+    // Dublin
     'https://sellwithrajnow.com/seller-center-dublin',
     'https://sellwithrajnow.com/seller-center/dublin/why-didnt-my-home-sell',
     'https://sellwithrajnow.com/seller-center/dublin/skipping-vs-rejection',
@@ -67,6 +70,7 @@ export function SitemapTxt() {
     'https://sellwithrajnow.com/seller-center/dublin/how-long-is-too-long',
     'https://sellwithrajnow.com/seller-center/dublin/why-price-reductions-dont-work',
     'https://sellwithrajnow.com/seller-center/dublin/dead-zone-pricing',
+    // Pleasanton
     'https://sellwithrajnow.com/seller-center-pleasanton',
     'https://sellwithrajnow.com/seller-center/pleasanton/why-didnt-my-home-sell',
     'https://sellwithrajnow.com/seller-center/pleasanton/skipping-vs-rejection',
@@ -79,27 +83,22 @@ export function SitemapTxt() {
     'https://sellwithrajnow.com/seller-center/pleasanton/why-price-reductions-dont-work',
     'https://sellwithrajnow.com/seller-center/pleasanton/dead-zone-pricing',
   ];
-
-  const textContent = urls.join('\n');
-
-  useEffect(() => {
-    // Replace entire document with plain text
-    document.open();
-    document.write(textContent);
-    document.close();
-  }, [textContent]);
-
-  // Fallback: render as plain text in a pre tag
+  
   return (
-    <pre style={{
-      margin: 0,
-      padding: 0,
+    <pre style={{ 
+      margin: 0, 
+      padding: 0, 
       fontFamily: 'monospace',
       fontSize: '12px',
       whiteSpace: 'pre',
-      lineHeight: '1.4'
+      lineHeight: '1.4',
+      backgroundColor: '#fff',
+      color: '#000',
+      width: '100%',
+      minHeight: '100vh',
+      boxSizing: 'border-box'
     }}>
-      {textContent}
+      {urls.join('\n')}
     </pre>
   );
 }

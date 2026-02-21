@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Lock, ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import { AISummarySection } from './seller-center/AISummarySection';
 
 export function SellerCenterMountainHouse() {
   const navigate = useNavigate();
@@ -21,6 +22,9 @@ export function SellerCenterMountainHouse() {
   return (
     <>
       <Helmet>
+        {/* SEO Meta Tags for AI Summary */}
+        <meta name="description" content="Mountain House Seller Center: Why homes fail to sell when HOA costs, total monthly payments, and newer construction comparisons affect buyer decisions. Central Valley master-planned community insights." />
+        
         {/* FAQ Schema for Mountain House Seller Center */}
         <script type="application/ld+json">
           {JSON.stringify({
@@ -32,26 +36,56 @@ export function SellerCenterMountainHouse() {
                 "name": "Why didn't my home sell in Mountain House?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Most homes in Mountain House don't fail outright. Buyers often hesitate at the monthly payment, compare alternatives, and wait for clearer value before committing."
+                  "text": "Most homes in Mountain House don't fail outright. Buyers often hesitate at the monthly payment (including HOA), compare alternatives, and wait for clearer value before committing."
                 }
               },
               {
                 "@type": "Question",
-                "name": "Why are buyers skipping homes in Mountain House?",
+                "name": "Why does my home sit when similar homes sell?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Skipping happens when buyers compare a home early and decide not to seriously consider it, often due to pricing position, payment sensitivity, or perceived risk."
+                  "text": "Mountain House buyers compare total monthly costs (mortgage + HOA + taxes). If your total payment is higher than similar homes without a clear value justification, buyers skip your listing for better payment-to-value options."
                 }
               },
               {
                 "@type": "Question",
-                "name": "Is my home overpriced or are buyers just waiting?",
+                "name": "How do HOA fees affect buyer decisions in Mountain House?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "In many cases, buyers are not rejecting the home outright. They are waiting to see if better value appears before acting."
+                  "text": "HOA fees directly impact monthly affordability calculations. Buyers factor these into their payment threshold, so a $700k home with $300/month HOA competes differently than a $720k home with $150/month HOA."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Why didn't my price reduction generate interest?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Small reductions that don't shift the total monthly payment into a more competitive tier rarely change buyer behavior. Buyers need to see meaningful payment improvement relative to alternatives."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Should I wait for more buyers or relist now?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Waiting works only if your pricing is already competitive. If current buyers are passing on your home due to payment friction, more buyers won't solve the underlying issue."
                 }
               }
             ]
+          })}
+        </script>
+        
+        {/* WebPage Schema with Summary */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "AI Summary — Seller Center: Mountain House",
+            "description": "Mountain House presents a master-planned community with distinct selling dynamics driven by HOA costs, newer construction comparisons, and commute-sensitive buyer pools. Homes in this market face buyer hesitation when monthly payment totals (including HOA dues) approach psychological thresholds or compete unfavorably with nearby alternatives. Because most inventory is relatively new and similar in age, buyers focus on value-per-dollar and payment affordability rather than unique features. Extended time on market signals pricing friction, especially in higher price bands where buyers are more selective and payment-conscious. Successfully selling in Mountain House requires positioning that accounts for total monthly costs, not just list price.",
+            "about": {
+              "@type": "Thing",
+              "name": "Mountain House Real Estate Market Analysis"
+            }
           })}
         </script>
       </Helmet>
@@ -267,7 +301,7 @@ export function SellerCenterMountainHouse() {
 
               {/* Aisle Card 3 */}
               <button 
-                onClick={() => navigate('/seller-center/mountain-house/are-there-buyers')}
+                onClick={() => navigate('/seller-center/mountain-house/are-there-still-buyers')}
                 className="bg-white border border-gray-200 rounded-xl p-6 hover:border-gray-400 transition-colors text-left group"
               >
                 <div className="flex items-start justify-between gap-4">
@@ -323,6 +357,30 @@ export function SellerCenterMountainHouse() {
             </button>
           </div>
         </section>
+
+        {/* AI SUMMARY SECTION */}
+        <AISummarySection
+          city="Mountain House"
+          summary="Mountain House presents a master-planned community with distinct selling dynamics driven by HOA costs, newer construction comparisons, and commute-sensitive buyer pools. Homes in this market face buyer hesitation when monthly payment totals (including HOA dues) approach psychological thresholds or compete unfavorably with nearby alternatives. Because most inventory is relatively new and similar in age, buyers focus on value-per-dollar and payment affordability rather than unique features. Extended time on market signals pricing friction, especially in higher price bands where buyers are more selective and payment-conscious. Successfully selling in Mountain House requires positioning that accounts for total monthly costs, not just list price."
+          faqs={[
+            {
+              question: "Why does my home sit when similar homes sell?",
+              answer: "Mountain House buyers compare total monthly costs (mortgage + HOA + taxes). If your total payment is higher than similar homes without a clear value justification, buyers skip your listing for better payment-to-value options."
+            },
+            {
+              question: "How do HOA fees affect buyer decisions in Mountain House?",
+              answer: "HOA fees directly impact monthly affordability calculations. Buyers factor these into their payment threshold, so a $700k home with $300/month HOA competes differently than a $720k home with $150/month HOA."
+            },
+            {
+              question: "Why didn't my price reduction generate interest?",
+              answer: "Small reductions that don't shift the total monthly payment into a more competitive tier rarely change buyer behavior. Buyers need to see meaningful payment improvement relative to alternatives."
+            },
+            {
+              question: "Should I wait for more buyers or relist now?",
+              answer: "Waiting works only if your pricing is already competitive. If current buyers are passing on your home due to payment friction, more buyers won't solve the underlying issue."
+            }
+          ]}
+        />
       </div>
     </>
   );

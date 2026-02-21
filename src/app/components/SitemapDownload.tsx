@@ -1,205 +1,6 @@
-import { Hono } from "npm:hono";
-import { cors } from "npm:hono/cors";
-import { logger } from "npm:hono/logger";
-import * as kv from "./kv_store.tsx";
+import React from 'react';
 
-const app = new Hono();
-
-// Enable logger
-app.use('*', logger(console.log));
-
-// Enable CORS for all routes and methods
-app.use(
-  "/*",
-  cors({
-    origin: "*",
-    allowHeaders: ["Content-Type", "Authorization"],
-    allowMethods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    exposeHeaders: ["Content-Length"],
-    maxAge: 600,
-  }),
-);
-
-// Health check endpoint
-app.get("/make-server-3def9df5/health", (c) => {
-  return c.json({ status: "ok" });
-});
-
-// Seller Intake Form
-app.post("/make-server-3def9df5/submit-seller-intake", async (c) => {
-  try {
-    const data = await c.req.json();
-    
-    // Store in KV
-    const timestamp = Date.now();
-    await kv.set(`seller_intake_${timestamp}`, data);
-    
-    return c.json({ success: true, message: 'Form submitted successfully' });
-  } catch (error) {
-    console.error('Error submitting seller intake form:', error);
-    return c.json({ success: false, error: error.message }, 500);
-  }
-});
-
-// Buyer Intake Form
-app.post("/make-server-3def9df5/submit-buyer-intake", async (c) => {
-  try {
-    const data = await c.req.json();
-    
-    const timestamp = Date.now();
-    await kv.set(`buyer_intake_${timestamp}`, data);
-    
-    return c.json({ success: true, message: 'Form submitted successfully' });
-  } catch (error) {
-    console.error('Error submitting buyer intake form:', error);
-    return c.json({ success: false, error: error.message }, 500);
-  }
-});
-
-// Loan Intake Form
-app.post("/make-server-3def9df5/submit-loan-intake", async (c) => {
-  try {
-    const data = await c.req.json();
-    
-    const timestamp = Date.now();
-    await kv.set(`loan_intake_${timestamp}`, data);
-    
-    return c.json({ success: true, message: 'Form submitted successfully' });
-  } catch (error) {
-    console.error('Error submitting loan intake form:', error);
-    return c.json({ success: false, error: error.message }, 500);
-  }
-});
-
-// Strategy Call Form
-app.post("/make-server-3def9df5/submit-strategy-call", async (c) => {
-  try {
-    const data = await c.req.json();
-    
-    const timestamp = Date.now();
-    await kv.set(`strategy_call_${timestamp}`, data);
-    
-    return c.json({ success: true, message: 'Form submitted successfully' });
-  } catch (error) {
-    console.error('Error submitting strategy call form:', error);
-    return c.json({ success: false, error: error.message }, 500);
-  }
-});
-
-// Consultation Call Form
-app.post("/make-server-3def9df5/submit-consultation", async (c) => {
-  try {
-    const data = await c.req.json();
-    
-    const timestamp = Date.now();
-    await kv.set(`consultation_${timestamp}`, data);
-    
-    return c.json({ success: true, message: 'Form submitted successfully' });
-  } catch (error) {
-    console.error('Error submitting consultation form:', error);
-    return c.json({ success: false, error: error.message }, 500);
-  }
-});
-
-// Quick Call Form
-app.post("/make-server-3def9df5/submit-quick-call", async (c) => {
-  try {
-    const data = await c.req.json();
-    
-    const timestamp = Date.now();
-    await kv.set(`quick_call_${timestamp}`, data);
-    
-    return c.json({ success: true, message: 'Form submitted successfully' });
-  } catch (error) {
-    console.error('Error submitting quick call form:', error);
-    return c.json({ success: false, error: error.message }, 500);
-  }
-});
-
-// AI Reports Form
-app.post("/make-server-3def9df5/submit-ai-reports", async (c) => {
-  try {
-    const data = await c.req.json();
-    
-    const timestamp = Date.now();
-    await kv.set(`ai_reports_${timestamp}`, data);
-    
-    return c.json({ success: true, message: 'Form submitted successfully' });
-  } catch (error) {
-    console.error('Error submitting AI reports form:', error);
-    return c.json({ success: false, error: error.message }, 500);
-  }
-});
-
-// Buyer Magnet Form
-app.post("/make-server-3def9df5/submit-buyer-magnet", async (c) => {
-  try {
-    const data = await c.req.json();
-    
-    const timestamp = Date.now();
-    await kv.set(`buyer_magnet_${timestamp}`, data);
-    
-    return c.json({ success: true, message: 'Form submitted successfully' });
-  } catch (error) {
-    console.error('Error submitting buyer magnet form:', error);
-    return c.json({ success: false, error: error.message }, 500);
-  }
-});
-
-// Second Opinion Form
-app.post("/make-server-3def9df5/submit-second-opinion", async (c) => {
-  try {
-    const data = await c.req.json();
-    
-    const timestamp = Date.now();
-    await kv.set(`second_opinion_${timestamp}`, data);
-    
-    return c.json({ success: true, message: 'Form submitted successfully' });
-  } catch (error) {
-    console.error('Error submitting second opinion form:', error);
-    return c.json({ success: false, error: error.message }, 500);
-  }
-});
-
-// ==========================================
-// SEO: Robots.txt with proper headers
-// ==========================================
-app.get("/make-server-3def9df5/robots.txt", (c) => {
-  const robotsTxt = `# SellWithRajNow.com - Robots.txt
-# Updated: February 7, 2026
-
-User-agent: *
-Allow: /
-
-# Sitemap location (served via Supabase Edge Function)
-Sitemap: https://voywgjfmxuywrtzfgfze.supabase.co/functions/v1/make-server-3def9df5/sitemap.xml
-
-# Crawl-delay (helps prevent server overload)
-Crawl-delay: 1
-
-# Disallow admin/system pages
-Disallow: /make-server-3def9df5/`;
-
-  return c.text(robotsTxt, 200, {
-    'Content-Type': 'text/plain; charset=utf-8',
-  });
-});
-
-// Sitemap.txt endpoint - serves plain text sitemap for Google Search Console
-app.get("/make-server-3def9df5/sitemap.txt", (c) => {
-  console.log('Sitemap.txt endpoint hit!');
-  
-  return c.text('https://sellwithrajnow.com/\nhttps://sellwithrajnow.com/buyer-magnet-score\nhttps://sellwithrajnow.com/ai-reports', 200, {
-    'Content-Type': 'text/plain; charset=utf-8',
-  });
-});
-
-// ==========================================
-// SEO: Sitemap.xml with proper XML headers
-// ==========================================
-app.get("/make-server-3def9df5/sitemap.xml", (c) => {
-  console.log('Sitemap.xml endpoint hit!');
-  
+export function SitemapDownload() {
   const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Core Pages -->
@@ -295,9 +96,77 @@ app.get("/make-server-3def9df5/sitemap.xml", (c) => {
   <url><loc>https://sellwithrajnow.com/seller-center/pleasanton/dead-zone-pricing</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
 </urlset>`;
 
-  return c.text(sitemapXml, 200, {
-    'Content-Type': 'application/xml; charset=utf-8',
-  });
-});
+  const handleDownload = () => {
+    const blob = new Blob([sitemapXml], { type: 'application/xml' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'sitemap.xml';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
 
-Deno.serve(app.fetch);
+  const handleCopy = () => {
+    navigator.clipboard.writeText(sitemapXml);
+    alert('Sitemap XML copied to clipboard!');
+  };
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 py-20 px-4">
+      <div className="max-w-4xl mx-auto">
+        <div className="bg-white rounded-2xl shadow-xl p-8">
+          <h1 className="text-3xl font-bold text-gray-900 mb-4">
+            Download Sitemap for Google Search Console
+          </h1>
+          
+          <div className="mb-8 p-6 bg-blue-50 rounded-lg border border-blue-200">
+            <h2 className="text-lg font-semibold text-blue-900 mb-3">
+              📋 Manual Upload Instructions
+            </h2>
+            <ol className="space-y-2 text-gray-700">
+              <li><strong>Step 1:</strong> Click "Download sitemap.xml" button below</li>
+              <li><strong>Step 2:</strong> Go to <a href="https://search.google.com/search-console" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Google Search Console</a></li>
+              <li><strong>Step 3:</strong> Select your property: <code className="bg-white px-2 py-1 rounded">sellwithrajnow.com</code></li>
+              <li><strong>Step 4:</strong> Navigate to <strong>Sitemaps</strong> in the left sidebar</li>
+              <li><strong>Step 5:</strong> Click "Add a new sitemap" and upload the downloaded file</li>
+            </ol>
+          </div>
+
+          <div className="flex gap-4 mb-8">
+            <button
+              onClick={handleDownload}
+              className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 px-6 rounded-lg transition-colors"
+            >
+              📥 Download sitemap.xml
+            </button>
+            <button
+              onClick={handleCopy}
+              className="flex-1 bg-gray-600 hover:bg-gray-700 text-white font-semibold py-4 px-6 rounded-lg transition-colors"
+            >
+              📋 Copy to Clipboard
+            </button>
+          </div>
+
+          <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
+            <h3 className="text-sm font-semibold text-gray-700 mb-2">Preview (First 10 lines):</h3>
+            <pre className="text-xs text-gray-600 overflow-x-auto">
+{sitemapXml.split('\n').slice(0, 10).join('\n')}
+...
+            </pre>
+            <p className="text-xs text-gray-500 mt-2">
+              Contains all 80+ URLs from your 6 Seller Centers + core pages
+            </p>
+          </div>
+
+          <div className="mt-6 p-4 bg-yellow-50 rounded-lg border border-yellow-200">
+            <p className="text-sm text-yellow-800">
+              <strong>⚠️ Why manual upload?</strong> Figma Make's hosting limitations prevent serving XML files with proper content-type headers that Google requires. Manual upload is the most reliable solution.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

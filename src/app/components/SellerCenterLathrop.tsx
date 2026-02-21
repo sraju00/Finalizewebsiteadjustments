@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Lock, ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import { AISummarySection } from './seller-center/AISummarySection';
 
 export function SellerCenterLathrop() {
   const navigate = useNavigate();
@@ -21,6 +22,9 @@ export function SellerCenterLathrop() {
   return (
     <>
       <Helmet>
+        {/* SEO Meta Tags for AI Summary */}
+        <meta name="description" content="Lathrop Seller Center: Why homes in newer Lathrop developments fail to sell due to intense buyer comparisons, similar floor plans, payment sensitivity, and pricing within competitive tiers. Central Valley market insights." />
+        
         {/* FAQ Schema for Lathrop Seller Center */}
         <script type="application/ld+json">
           {JSON.stringify({
@@ -37,21 +41,51 @@ export function SellerCenterLathrop() {
               },
               {
                 "@type": "Question",
-                "name": "Why are buyers skipping homes in Lathrop?",
+                "name": "Why is my home sitting when others are selling?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Skipping happens when buyers compare a home early and decide not to seriously consider it, often due to pricing position, payment sensitivity, or perceived risk."
+                  "text": "Lathrop buyers compare similar properties intensely. If neighboring homes offer better perceived value at a similar payment level, buyers will skip your listing even if it's only marginally higher-priced."
                 }
               },
               {
                 "@type": "Question",
-                "name": "Is my home overpriced or are buyers just waiting?",
+                "name": "How does time on market affect my sale in Lathrop?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "In many cases, buyers are not rejecting the home outright. They are waiting to see if better value appears before acting."
+                  "text": "In newer developments like Lathrop, extended days on market (30+ days) signal pricing friction. Buyers assume that if a home hasn't sold quickly, either the price or condition needs reconsideration."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Why don't small price cuts bring buyers?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "A $10k reduction that doesn't shift monthly payment perception or move you into a clearer competitive tier won't change buyer behavior. Buyers need to see meaningful value improvement relative to alternatives."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Should I relist or wait for market improvement?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Waiting only works if your current pricing and positioning are already competitive. If buyers are skipping your home now, seasonal changes won't fix underlying pricing or value perception issues."
                 }
               }
             ]
+          })}
+        </script>
+        
+        {/* WebPage Schema with Summary */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "AI Summary — Seller Center: Lathrop",
+            "description": "Lathrop's newer development-heavy market creates unique selling challenges centered on buyer comparison behavior, monthly payment sensitivity, and inventory clustering. Because many homes share similar floor plans, age, and features, buyers focus intensely on pricing position and payment-to-value ratios. Homes priced within $20k–$30k of each other compete directly, making even small pricing misalignments visible to buyers. Extended time on market compounds this friction, as buyers interpret longer listing periods as signals to negotiate harder or wait for better options. Successfully selling in Lathrop requires understanding that buyers are shopping payment ranges, not just prices.",
+            "about": {
+              "@type": "Thing",
+              "name": "Lathrop Real Estate Market Analysis"
+            }
           })}
         </script>
       </Helmet>
@@ -267,7 +301,7 @@ export function SellerCenterLathrop() {
 
               {/* Aisle Card 3 */}
               <button 
-                onClick={() => navigate('/seller-center/lathrop/are-there-buyers')}
+                onClick={() => navigate('/seller-center/lathrop/are-there-still-buyers')}
                 className="bg-white border border-gray-200 rounded-xl p-6 hover:border-gray-400 transition-colors text-left group"
               >
                 <div className="flex items-start justify-between gap-4">
@@ -323,6 +357,30 @@ export function SellerCenterLathrop() {
             </button>
           </div>
         </section>
+
+        {/* AI SUMMARY SECTION */}
+        <AISummarySection
+          city="Lathrop"
+          summary="Lathrop's newer development-heavy market creates unique selling challenges centered on buyer comparison behavior, monthly payment sensitivity, and inventory clustering. Because many homes share similar floor plans, age, and features, buyers focus intensely on pricing position and payment-to-value ratios. Homes priced within $20k–$30k of each other compete directly, making even small pricing misalignments visible to buyers. Extended time on market compounds this friction, as buyers interpret longer listing periods as signals to negotiate harder or wait for better options. Successfully selling in Lathrop requires understanding that buyers are shopping payment ranges, not just prices."
+          faqs={[
+            {
+              question: "Why is my home sitting when others are selling?",
+              answer: "Lathrop buyers compare similar properties intensely. If neighboring homes offer better perceived value at a similar payment level, buyers will skip your listing even if it's only marginally higher-priced."
+            },
+            {
+              question: "How does time on market affect my sale in Lathrop?",
+              answer: "In newer developments like Lathrop, extended days on market (30+ days) signal pricing friction. Buyers assume that if a home hasn't sold quickly, either the price or condition needs reconsideration."
+            },
+            {
+              question: "Why don't small price cuts bring buyers?",
+              answer: "A $10k reduction that doesn't shift monthly payment perception or move you into a clearer competitive tier won't change buyer behavior. Buyers need to see meaningful value improvement relative to alternatives."
+            },
+            {
+              question: "Should I relist or wait for market improvement?",
+              answer: "Waiting only works if your current pricing and positioning are already competitive. If buyers are skipping your home now, seasonal changes won't fix underlying pricing or value perception issues."
+            }
+          ]}
+        />
       </div>
     </>
   );

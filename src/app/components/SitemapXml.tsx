@@ -1,4 +1,43 @@
-<?xml version="1.0" encoding="UTF-8"?>
+import React from 'react';
+
+export function SitemapXml() {
+  // Render XML content as plain text
+  const xmlContent = generateSitemapXml();
+  
+  // Use a special React hook to tell browsers this is XML
+  React.useEffect(() => {
+    // Try to hint to browsers this is XML content
+    const meta = document.createElement('meta');
+    meta.httpEquiv = 'Content-Type';
+    meta.content = 'application/xml; charset=utf-8';
+    document.head.appendChild(meta);
+    
+    return () => {
+      document.head.removeChild(meta);
+    };
+  }, []);
+  
+  return (
+    <pre style={{ 
+      margin: 0, 
+      padding: 0, 
+      fontFamily: 'monospace',
+      fontSize: '12px',
+      whiteSpace: 'pre-wrap',
+      lineHeight: '1.4',
+      backgroundColor: '#fff',
+      color: '#000',
+      width: '100%',
+      minHeight: '100vh',
+      boxSizing: 'border-box'
+    }}>
+      {xmlContent}
+    </pre>
+  );
+}
+
+function generateSitemapXml() {
+  return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Core Pages -->
   <url><loc>https://sellwithrajnow.com/</loc><priority>1.0</priority><changefreq>weekly</changefreq></url>
@@ -91,4 +130,5 @@
   <url><loc>https://sellwithrajnow.com/seller-center/pleasanton/how-long-is-too-long</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://sellwithrajnow.com/seller-center/pleasanton/why-price-reductions-dont-work</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://sellwithrajnow.com/seller-center/pleasanton/dead-zone-pricing</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
-</urlset>
+</urlset>`;
+}

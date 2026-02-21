@@ -1,7 +1,8 @@
-import { ArrowLeft, Home, TrendingUp, DollarSign, Users, Clock, BarChart3, Target, AlertCircle, RefreshCw, Layers } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { Lock, ArrowRight, ArrowLeft, Home, Target, DollarSign, Users, RefreshCw, TrendingUp, BarChart3, Clock, AlertCircle, Layers } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import { AISummarySection } from './seller-center/AISummarySection';
 
 export function SellerCenterDublin() {
   const navigate = useNavigate();
@@ -14,6 +15,9 @@ export function SellerCenterDublin() {
   return (
     <>
       <Helmet>
+        {/* SEO Meta Tags for AI Summary */}
+        <meta name="description" content="Dublin Seller Center: Why Bay Area homes in Dublin fail to sell due to school quality expectations, premium pricing friction, sophisticated buyer comparisons, and payment-to-value analysis. East Bay market insights." />
+        
         {/* FAQ Schema for Dublin Seller Center */}
         <script type="application/ld+json">
           {JSON.stringify({
@@ -30,21 +34,51 @@ export function SellerCenterDublin() {
               },
               {
                 "@type": "Question",
-                "name": "Why are buyers skipping homes in Dublin?",
+                "name": "Why are buyers passing on my Dublin home?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Skipping happens when buyers compare a home early and decide not to seriously consider it, often due to pricing position, payment sensitivity, or perceived risk."
+                  "text": "Dublin buyers compare homes within their target school zones and payment ranges intensely. If your pricing doesn't clearly justify the value relative to alternatives in similar school districts, buyers skip your listing for better perceived deals."
                 }
               },
               {
                 "@type": "Question",
-                "name": "Is my home overpriced or are buyers just waiting?",
+                "name": "How do schools affect home sales in Dublin?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "In many cases, buyers are not rejecting the home outright. They are waiting to see if better value appears before acting."
+                  "text": "School ratings heavily influence buyer perception and willingness to pay. Homes in lower-rated zones face steeper pricing resistance, while those in top zones command premiums—but only when priced competitively within that tier."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Why didn't my price cut bring offers in Dublin?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Small reductions that don't shift your home into a clearer competitive position or meaningfully change monthly payment perception rarely impact buyer behavior. Dublin buyers need to see substantial value improvement."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Should I wait for spring or relist now in Dublin?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Waiting works only if your current pricing and positioning are competitive. If buyers are skipping your home now due to value perception issues, seasonal timing won't resolve the fundamental friction."
                 }
               }
             ]
+          })}
+        </script>
+        
+        {/* WebPage Schema with Summary */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "AI Summary — Seller Center: Dublin",
+            "description": "Dublin's Bay Area market dynamics create specific selling challenges rooted in buyer expectations for school quality, commute access, and premium positioning. Homes fail to sell when pricing doesn't align with perceived value relative to competing properties in similarly rated school districts. Buyers in Dublin are highly informed, payment-conscious, and comparison-driven—they scrutinize monthly costs, property tax implications, and HOA fees alongside list price. Extended time on market amplifies skepticism, as buyers interpret listing longevity as either overpricing or undisclosed issues. Successfully selling in Dublin requires understanding that buyers are shopping lifestyle value, not just square footage.",
+            "about": {
+              "@type": "Thing",
+              "name": "Dublin Real Estate Market Analysis"
+            }
           })}
         </script>
       </Helmet>
@@ -145,11 +179,11 @@ export function SellerCenterDublin() {
 
               {/* Page 4 */}
               <button
-                onClick={() => navigate('/seller-center/dublin/are-there-buyers')}
+                onClick={() => navigate('/seller-center/dublin/are-there-still-buyers')}
                 className="bg-white border border-gray-200 rounded-lg p-6 hover:border-blue-500 hover:shadow-lg transition-all text-left"
               >
                 <Users className="w-8 h-8 text-gray-700 mb-4" />
-                <h3 className="font-bold text-gray-900 mb-2">Are There Buyers?</h3>
+                <h3 className="font-bold text-gray-900 mb-2">Are There Still Buyers?</h3>
                 <p className="text-sm text-gray-600">
                   Yes — but they're selective.
                 </p>
@@ -228,6 +262,34 @@ export function SellerCenterDublin() {
               </button>
             </div>
           </div>
+
+          {/* AI SUMMARY SECTION */}
+          <AISummarySection
+            city="Dublin"
+            summary="Dublin's Bay Area market dynamics create specific selling challenges rooted in buyer expectations for school quality, commute access, and premium positioning. Homes fail to sell when pricing doesn't align with perceived value relative to competing properties in similarly rated school districts. Buyers in Dublin are highly informed, payment-conscious, and comparison-driven—they scrutinize monthly costs, property tax implications, and HOA fees alongside list price. Extended time on market amplifies skepticism, as buyers interpret listing longevity as either overpricing or undisclosed issues. Successfully selling in Dublin requires understanding that buyers are shopping lifestyle value, not just square footage."
+            faqs={[
+              {
+                question: "Why are buyers passing on my Dublin home?",
+                answer: "Dublin buyers compare homes within their target school zones and payment ranges intensely. If your pricing doesn't clearly justify the value relative to alternatives in similar school districts, buyers skip your listing for better perceived deals."
+              },
+              {
+                question: "How do schools affect home sales in Dublin?",
+                answer: "School ratings heavily influence buyer perception and willingness to pay. Homes in lower-rated zones face steeper pricing resistance, while those in top zones command premiums—but only when priced competitively within that tier."
+              },
+              {
+                question: "Why didn't my price cut bring offers in Dublin?",
+                answer: "Small reductions that don't shift your home into a clearer competitive position or meaningfully change monthly payment perception rarely impact buyer behavior. Dublin buyers need to see substantial value improvement."
+              },
+              {
+                question: "Are there enough buyers in Dublin's price ranges?",
+                answer: "Yes, but they're highly selective. Move-up and executive buyers dominate, and they expect premium value for premium prices. Payment affordability and school access drive their decisions."
+              },
+              {
+                question: "Should I wait for spring or relist now in Dublin?",
+                answer: "Waiting works only if your current pricing and positioning are competitive. If buyers are skipping your home now due to value perception issues, seasonal timing won't resolve the fundamental friction."
+              }
+            ]}
+          />
         </div>
       </div>
     </>

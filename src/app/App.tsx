@@ -35,7 +35,10 @@ import { SellerCenterTracy } from './components/SellerCenterTracy';
 import { SellerAuditRequest } from './components/SellerAuditRequest';
 import { PrivateSellerAudit } from './components/PrivateSellerAudit';
 import { Layout } from './components/Layout';
-import { SitemapTxt } from './components/SitemapTxt';
+import { Sitemap } from './components/Sitemap';
+import { SitemapXml } from "./components/SitemapXml";
+import { SitemapTxt } from "./components/SitemapTxt";
+import { SitemapDownload } from "./components/SitemapDownload";
 import { WhyDidntMyHomeSell } from './components/seller-center/WhyDidntMyHomeSell';
 import { SkippingVsRejection } from './components/seller-center/SkippingVsRejection';
 import { PriceVsPayment } from './components/seller-center/PriceVsPayment';
@@ -238,7 +241,10 @@ function AppContent({
       <ScrollToTop />
       <Routes>
         {/* SEO Routes - NO LAYOUT (plain text/xml only) */}
+        <Route path="/sitemap.xml" element={<SitemapXml />} />
         <Route path="/sitemap.txt" element={<SitemapTxt />} />
+        <Route path="/sitemap" element={<SitemapTxt />} />
+        <Route path="/sitemap-download" element={<SitemapDownload />} />
         
         {/* All routes WITH layout */}
         <Route path="/" element={withLayout(<HomePage 
@@ -283,7 +289,7 @@ function AppContent({
         <Route path="/seller-center/manteca/why-didnt-my-home-sell" element={withLayout(<WhyDidntMyHomeSellManteca />)} />
         <Route path="/seller-center/manteca/skipping-vs-rejection" element={withLayout(<SkippingVsRejectionManteca />)} />
         <Route path="/seller-center/manteca/price-vs-payment" element={withLayout(<PriceVsPaymentManteca />)} />
-        <Route path="/seller-center/manteca/are-there-buyers" element={withLayout(<AreThereStillBuyersManteca />)} />
+        <Route path="/seller-center/manteca/are-there-still-buyers" element={withLayout(<AreThereStillBuyersManteca />)} />
         <Route path="/seller-center/manteca/relist-or-wait" element={withLayout(<RelistOrWaitManteca />)} />
         <Route path="/seller-center/manteca/which-price-ranges-moving" element={withLayout(<WhichPriceRangesMovingManteca />)} />
         <Route path="/seller-center/manteca/selective-buyer-market" element={withLayout(<SelectiveBuyerMarketManteca />)} />
@@ -296,7 +302,7 @@ function AppContent({
         <Route path="/seller-center/lathrop/why-didnt-my-home-sell" element={withLayout(<WhyDidntMyHomeSellLathrop />)} />
         <Route path="/seller-center/lathrop/skipping-vs-rejection" element={withLayout(<SkippingVsRejectionLathrop />)} />
         <Route path="/seller-center/lathrop/price-vs-payment" element={withLayout(<PriceVsPaymentLathrop />)} />
-        <Route path="/seller-center/lathrop/are-there-buyers" element={withLayout(<AreThereStillBuyersLathrop />)} />
+        <Route path="/seller-center/lathrop/are-there-still-buyers" element={withLayout(<AreThereStillBuyersLathrop />)} />
         <Route path="/seller-center/lathrop/relist-or-wait" element={withLayout(<RelistOrWaitLathrop />)} />
         <Route path="/seller-center/lathrop/which-price-ranges-moving" element={withLayout(<WhichPriceRangesMovingLathrop />)} />
         <Route path="/seller-center/lathrop/selective-buyer-market" element={withLayout(<SelectiveBuyerMarketLathrop />)} />
@@ -309,7 +315,7 @@ function AppContent({
         <Route path="/seller-center/mountain-house/why-didnt-my-home-sell" element={withLayout(<WhyDidntMyHomeSellMountainHouse />)} />
         <Route path="/seller-center/mountain-house/skipping-vs-rejection" element={withLayout(<SkippingVsRejectionMountainHouse />)} />
         <Route path="/seller-center/mountain-house/price-vs-payment" element={withLayout(<PriceVsPaymentMountainHouse />)} />
-        <Route path="/seller-center/mountain-house/are-there-buyers" element={withLayout(<AreThereStillBuyersMountainHouse />)} />
+        <Route path="/seller-center/mountain-house/are-there-still-buyers" element={withLayout(<AreThereStillBuyersMountainHouse />)} />
         <Route path="/seller-center/mountain-house/relist-or-wait" element={withLayout(<RelistOrWaitMountainHouse />)} />
         <Route path="/seller-center/mountain-house/which-price-ranges-moving" element={withLayout(<WhichPriceRangesMovingMountainHouse />)} />
         <Route path="/seller-center/mountain-house/selective-buyer-market" element={withLayout(<SelectiveBuyerMarketMountainHouse />)} />
@@ -322,7 +328,7 @@ function AppContent({
         <Route path="/seller-center/dublin/why-didnt-my-home-sell" element={withLayout(<WhyDidntMyHomeSellDublin />)} />
         <Route path="/seller-center/dublin/skipping-vs-rejection" element={withLayout(<SkippingVsRejectionDublin />)} />
         <Route path="/seller-center/dublin/price-vs-payment" element={withLayout(<PriceVsPaymentDublin />)} />
-        <Route path="/seller-center/dublin/are-there-buyers" element={withLayout(<AreThereStillBuyersDublin />)} />
+        <Route path="/seller-center/dublin/are-there-still-buyers" element={withLayout(<AreThereStillBuyersDublin />)} />
         <Route path="/seller-center/dublin/relist-or-wait" element={withLayout(<RelistOrWaitDublin />)} />
         <Route path="/seller-center/dublin/which-price-ranges-moving" element={withLayout(<WhichPriceRangesMovingDublin />)} />
         <Route path="/seller-center/dublin/selective-buyer-market" element={withLayout(<SelectiveBuyerMarketDublin />)} />
@@ -335,7 +341,7 @@ function AppContent({
         <Route path="/seller-center/pleasanton/why-didnt-my-home-sell" element={withLayout(<WhyDidntMyHomeSellPleasanton />)} />
         <Route path="/seller-center/pleasanton/skipping-vs-rejection" element={withLayout(<SkippingVsRejectionPleasanton />)} />
         <Route path="/seller-center/pleasanton/price-vs-payment" element={withLayout(<PriceVsPaymentPleasanton />)} />
-        <Route path="/seller-center/pleasanton/are-there-buyers" element={withLayout(<AreThereStillBuyersPleasanton />)} />
+        <Route path="/seller-center/pleasanton/are-there-still-buyers" element={withLayout(<AreThereStillBuyersPleasanton />)} />
         <Route path="/seller-center/pleasanton/relist-or-wait" element={withLayout(<RelistOrWaitPleasanton />)} />
         <Route path="/seller-center/pleasanton/which-price-ranges-moving" element={withLayout(<WhichPriceRangesMovingPleasanton />)} />
         <Route path="/seller-center/pleasanton/selective-buyer-market" element={withLayout(<SelectiveBuyerMarketPleasanton />)} />
@@ -416,12 +422,15 @@ export default function App() {
         <meta name="google-site-verification" content="oMebLekZ2jwXFoGDqmbMpVFJ5T11DFRIugH4cIotvjc" />
         <meta name="format-detection" content="telephone=no,email=no,address=no" />
         
-        {/* Enhanced RealEstateAgent Schema - Primary Entity */}
+        {/* Sitemap Discovery - Google will find this automatically */}
+        <link rel="sitemap" type="application/xml" href="https://sellwithrajnow.com/sitemap.xml" />
+        
+        {/* Person Schema - Raj Saravanan */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "RealEstateAgent",
-            "@id": "https://sellwithrajnow.com/#agent",
+            "@type": "Person",
+            "@id": "https://sellwithrajnow.com/#person",
             "name": "Raj Saravanan",
             "givenName": "Raj",
             "familyName": "Saravanan",
@@ -430,34 +439,41 @@ export default function App() {
             "url": "https://sellwithrajnow.com",
             "image": "https://sellwithrajnow.com/images/raj-profile.jpg",
             "description": "Licensed California Realtor® specializing in expired listings, seller intelligence, and data-driven pricing strategy for Central Valley and Bay Area homeowners.",
-            "brand": {
-              "@type": "Brand",
-              "name": "SellWithRajNow",
-              "url": "https://sellwithrajnow.com"
-            },
             "worksFor": {
               "@type": "Organization",
-              "@id": "https://sellwithrajnow.com/#organization",
-              "name": "SellWithRajNow",
-              "url": "https://sellwithrajnow.com",
-              "description": "AI-driven seller intelligence and buyer behavior analysis for California homeowners. Specializing in expired, cancelled, and withdrawn listings.",
-              "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Tracy",
-                "addressRegion": "CA",
-                "addressCountry": "US"
-              },
-              "areaServed": {
-                "@type": "State",
-                "name": "California"
-              },
-              "contactPoint": {
-                "@type": "ContactPoint",
-                "contactType": "customer support",
-                "email": "raj@sellwithrajnow.com",
-                "availableLanguage": "en"
-              }
+              "@id": "https://sellwithrajnow.com/#organization"
             },
+            "knowsAbout": [
+              "Expired Listings",
+              "Cancelled Listings",
+              "Withdrawn Listings",
+              "Real Estate Pricing Strategy",
+              "Buyer Behavior Analysis",
+              "Mortgage Strategy",
+              "Seller Decision Making",
+              "Price vs Payment Analysis",
+              "Market Liquidity Analysis",
+              "Central Valley Real Estate",
+              "Bay Area Real Estate"
+            ],
+            "sameAs": [
+              "https://www.linkedin.com/in/raj-saravanan"
+            ]
+          })}
+        </script>
+        
+        {/* LocalBusiness Schema - RealEstateAgent */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "RealEstateAgent",
+            "@id": "https://sellwithrajnow.com/#agent",
+            "name": "SellWithRajNow",
+            "url": "https://sellwithrajnow.com",
+            "email": "raj@sellwithrajnow.com",
+            "image": "https://sellwithrajnow.com/images/raj-profile.jpg",
+            "description": "AI-driven seller intelligence and buyer behavior analysis for California homeowners. Specializing in expired, cancelled, and withdrawn listings.",
+            "priceRange": "$$",
             "address": {
               "@type": "PostalAddress",
               "addressLocality": "Tracy",
@@ -514,83 +530,93 @@ export default function App() {
                 }
               }
             ],
-            "hasCredential": [
-              {
-                "@type": "EducationalOccupationalCredential",
-                "credentialCategory": "Real Estate License",
-                "recognizedBy": {
-                  "@type": "Organization",
-                  "name": "California Department of Real Estate"
-                }
-              }
-            ],
+            "employee": {
+              "@type": "Person",
+              "@id": "https://sellwithrajnow.com/#person"
+            },
             "makesOffer": [
               {
                 "@type": "Offer",
                 "itemOffered": {
                   "@type": "Service",
-                  "name": "Expired Listing Analysis",
-                  "description": "Data-driven diagnosis of why homes fail to sell using Buyer Magnet Score™ and market intelligence"
+                  "name": "Buyer Magnet Score™",
+                  "description": "Algorithmic analysis of listing appeal to active buyers"
                 }
               },
               {
                 "@type": "Offer",
                 "itemOffered": {
                   "@type": "Service",
-                  "name": "Seller Intelligence Reports",
-                  "description": "AI-powered market reports including Liquidity Snapshot™ and pricing strategy analysis"
+                  "name": "Liquidity Snapshot™",
+                  "description": "Real-time market absorption and pricing strategy report"
                 }
               },
               {
                 "@type": "Offer",
                 "itemOffered": {
                   "@type": "Service",
-                  "name": "Mortgage Strategy Consultation",
-                  "description": "Price vs payment analysis and buyer financing qualification insights"
+                  "name": "Private Seller Audit",
+                  "description": "Confidential analysis of why a home failed to sell"
                 }
               }
-            ],
-            "knowsAbout": [
-              "Expired Listings",
-              "Cancelled Listings",
-              "Withdrawn Listings",
-              "Real Estate Pricing Strategy",
-              "Buyer Behavior Analysis",
-              "Mortgage Strategy",
-              "Seller Decision Making",
-              "Price vs Payment Analysis",
-              "Market Liquidity Analysis",
-              "Central Valley Real Estate",
-              "Bay Area Real Estate"
-            ],
-            "sameAs": [
-              "https://www.linkedin.com/in/raj-saravanan"
             ]
           })}
         </script>
         
-        {/* Professional Service Schema */}
+        {/* Organization Schema */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "ProfessionalService",
+            "@type": "Organization",
+            "@id": "https://sellwithrajnow.com/#organization",
+            "name": "SellWithRajNow",
+            "url": "https://sellwithrajnow.com",
+            "description": "AI-driven seller intelligence and buyer behavior analysis for California homeowners. Specializing in expired, cancelled, and withdrawn listings.",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Tracy",
+              "addressRegion": "CA",
+              "addressCountry": "US"
+            },
+            "areaServed": {
+              "@type": "State",
+              "name": "California"
+            },
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "contactType": "customer support",
+              "email": "raj@sellwithrajnow.com",
+              "availableLanguage": "en"
+            },
+            "employee": {
+              "@type": "Person",
+              "@id": "https://sellwithrajnow.com/#person"
+            }
+          })}
+        </script>
+        
+        {/* Service Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
             "@id": "https://sellwithrajnow.com/#service",
-            "name": "SellWithRajNow - Real Estate Services",
+            "name": "Real Estate Services - Expired Listing Specialist",
             "url": "https://sellwithrajnow.com",
             "description": "Licensed California real estate services specializing in expired listings and data-driven seller strategy",
             "provider": {
               "@type": "RealEstateAgent",
               "@id": "https://sellwithrajnow.com/#agent"
             },
-            "serviceType": "Real Estate Agent",
             "areaServed": [
-              "Tracy CA",
-              "Manteca CA", 
-              "Lathrop CA",
-              "Mountain House CA",
-              "Dublin CA",
-              "Pleasanton CA"
+              "Tracy, CA",
+              "Manteca, CA", 
+              "Lathrop, CA",
+              "Mountain House, CA",
+              "Dublin, CA",
+              "Pleasanton, CA"
             ],
+            "serviceType": "Real Estate Sales",
             "hasOfferCatalog": {
               "@type": "OfferCatalog",
               "name": "Real Estate Services",

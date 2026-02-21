@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+
 export function RobotsTxt() {
   const robotsContent = `# SellWithRajNow.com - Robots.txt
 # Updated: February 7, 2026
@@ -5,8 +7,8 @@ export function RobotsTxt() {
 User-agent: *
 Allow: /
 
-# Sitemap location
-Sitemap: https://sellwithrajnow.com/sitemap.txt
+# Sitemap location (hosted locally at sellwithrajnow.com)
+Sitemap: https://sellwithrajnow.com/sitemap.xml
 
 # Crawl-delay (optional, helps prevent server overload)
 Crawl-delay: 1
@@ -15,6 +17,14 @@ Crawl-delay: 1
 Disallow: /admin/
 Disallow: /private/`;
 
+  useEffect(() => {
+    // Replace entire document with plain text
+    document.open();
+    document.write(robotsContent);
+    document.close();
+  }, [robotsContent]);
+
+  // Fallback: render as plain text in a pre tag
   return (
     <pre style={{ 
       margin: 0, 
